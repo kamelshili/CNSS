@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="CNSSInv.Views.LoginPage"
+           Title="LOGIN">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="MasterLayout" >
+                <StackLayout Margin="5,5,5,0" Orientation="Horizontal">
+                    <dxco:SimpleButton x:Name="Btn_setting" Text="A Propos"  Clicked="Btn_setting_Clicked"   HorizontalOptions="StartAndExpand" BackgroundColor="DeepSkyBlue" TextColor="White" />
+                    <Label x:Name="Lbl_demo" Text="Demo" TextColor="Red" FontAttributes="Bold" FontSize="20" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout x:Name="LogoStack" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="LoginIcon" Source="login_icon.png" Margin="0,50,0,0" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand" Spacing="20" Padding="15">
+                    <dxe:ComboBoxEdit LabelText="Select a Username"
+                    x:Name="Entry_Username"
+                    SelectedItem="{Binding UserSelected, Mode=TwoWay}" 
+                    ItemsSource="{Binding AllUsers}"  
+                    DisplayMember="Name_User"  >
+                        <dxe:ComboBoxEdit.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Label Padding="10" Text="{Binding Name_User}" FontAttributes="Bold" />
+                                </Grid>
+                            </DataTemplate>
+                        </dxe:ComboBoxEdit.ItemTemplate>
+                    </dxe:ComboBoxEdit>
+                    <dxe:PasswordEdit x:Name="Entry_Password" PlaceholderText="Password"  Text="{Binding Password}" Focused="Entry_Password_Focused" Unfocused="Entry_Password_Unfocused" >
+                    </dxe:PasswordEdit>
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <dxco:SimpleButton x:Name="Btn_Exit"  Text="Exit" Clicked="Quit"  HorizontalOptions="FillAndExpand" BackgroundColor="DeepSkyBlue" TextColor="White"/>
+                        <dxco:SimpleButton x:Name="Btn_Login"  Text="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding Source={x:Reference Entry_Password} }"  HorizontalOptions="FillAndExpand" BackgroundColor="DeepSkyBlue" TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" >
+                    <Label x:Name="labelcr2" Text="COPYRIGHT © TUNITRACK 2023" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"  BackgroundColor="Gray" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  CharacterSpacing="4"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

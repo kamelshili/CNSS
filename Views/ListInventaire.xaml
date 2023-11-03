@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="CNSSInv.Views.ListInventaire"
+             Title="Liste Des Inventaires">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="Lbl_Total" Text="Total : "/>
+                <StackLayout>
+                    <dxe:TextEdit x:Name="txt_search" IsVisible="false" PlaceholderText="Chercher Par Num Immo" Focused="txt_search_Focused" Unfocused="txt_search_Unfocused" TextChanged="txt_search_TextChanged" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout>
+                    <dxg:DataGridView x:Name="listInventaire" ShowAutoFilterRow="True" VerticalOptions="FillAndExpand" BackgroundColor="WhiteSmoke">
+                        <dxg:DataGridView.Columns>
+                            <dxg:TextColumn  FieldName="NumImmo" Caption="Numero Immo" AutoFilterCondition="Contains"></dxg:TextColumn>
+                            <dxg:TextColumn FieldName="Lib_Nature_TH" Caption="Libellé Nature" AutoFilterCondition="Contains"></dxg:TextColumn>
+                        </dxg:DataGridView.Columns>
+                    </dxg:DataGridView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

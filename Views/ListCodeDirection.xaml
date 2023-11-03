@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="CNSSInv.Views.ListCodeDirection"
+             Title="Liste Des Codes Directions">
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <dxe:TextEdit IsVisible="False" x:Name="txt_search" PlaceholderText="Chercher Par Code Bureau" Focused="txt_search_Focused" Unfocused="txt_search_Unfocused" TextChanged="txt_search_TextChanged" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+            <dxg:DataGridView x:Name="listEmpl"  VerticalOptions="FillAndExpand"    ShowAutoFilterRow="True"
+                  BackgroundColor="WhiteSmoke" ItemsSource="{Binding ListCodeDirectionUniteBudgetaires,Mode=TwoWay}"  SelectedItem="{Binding SelectedCode_DirectionUniteBudgetaires, Mode=TwoWay}"  Tap="listEmpl_Tap"  >
+                <dxg:DataGridView.Columns>
+                    <dxg:TextColumn  FieldName="Code_Direction" Caption="Code_Direction" AutoFilterCondition="Contains"/>
+                    <dxg:TextColumn  FieldName="ZONE" Caption="Zone" AutoFilterCondition="Contains"/>
+                </dxg:DataGridView.Columns>
+            </dxg:DataGridView>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="CNSSInv.Views.NextUniteBudgetaire"
+             Title="Localisation">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="8">
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <StackLayout Spacing="3" Padding="15"  Margin="0,-10,0,0">
+                        <Label Text="Zone : " FontSize="Medium" IsVisible="False"/>
+                        <StackLayout Orientation="Horizontal" IsVisible="False">
+                            <Picker x:Name="Picker_Zone" Focused="Picker_Zone_Focused" Unfocused="Picker_Zone_Unfocused" ItemsSource="{Binding ListZoneUniteBudgetaires, Mode=TwoWay}" SelectedItem="{Binding SelectedZoneUniteBudgetaires}" ItemDisplayBinding="{Binding ZONE}"   FontSize="Medium" HorizontalOptions="FillAndExpand" />
+                            <ImageButton x:Name="Img_Button_Filter_Zone" Source="search.png" Clicked="Img_Button_Filter_Zone_Clicked"   BackgroundColor="White"/>
+                        </StackLayout>
+                        <Label Text="Site : " FontSize="Medium" IsVisible="False"/>
+                        <StackLayout Orientation="Horizontal" IsVisible="False">
+                            <Picker x:Name="Picker_Site" Focused="Picker_Site_Focused" Unfocused="Picker_Site_Unfocused"  ItemsSource="{Binding ListSiteUniteBudgetaires, Mode=TwoWay}" ItemDisplayBinding="{Binding SITE}" SelectedItem="{Binding SelectedSiteUniteBudgetaires}" FontSize="Medium" Margin="0" HorizontalOptions="FillAndExpand" IsEnabled="False"/>
+                            <ImageButton x:Name="Img_Button_Filter_Site" Source="search.png" Clicked="Img_Button_Filter_Site_Clicked"  IsEnabled="False" BackgroundColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <Label x:Name="Lbl_Test"  FontSize="Medium" Text="b" IsVisible="False"/>
+                <!--<Label Text="CODE LOCALE : " FontSize="Medium" />-->
+                <StackLayout Orientation="Horizontal">
+                    <dxe:ComboBoxEdit x:Name="Picker_Locale" LabelText="CODE LOCALE :" Focused="Picker_Locale_Focused" Unfocused="Picker_Locale_Unfocused"  ItemsSource="{Binding ListCode_LocalUniteBudgetaires, Mode=TwoWay}" DisplayMember="Code_Local" SelectedItem="{Binding SelectedCode_LocalUniteBudgetaires, Mode=TwoWay}" SelectionChanged="Picker_Locale_SelectedIndexChanged" TextFontSize="Medium" Margin="0" HorizontalOptions="FillAndExpand"  />
+                    <ImageButton x:Name="Img_Button_Filter_Code_Local" Source="search.png" Clicked="Img_Button_Filter_Code_Local_Clicked"   BackgroundColor="White"/>
+                </StackLayout>
+                <!--<Label Text="CODE BATIMENT : " FontSize="Medium" />-->
+                <StackLayout Orientation="Horizontal">
+                    <dxe:ComboBoxEdit x:Name="Picker_Empl" LabelText="CODE BATIMENT :"  Focused="Picker_Empl_Focused" Unfocused="Picker_Empl_Unfocused"  ItemsSource="{Binding ListEmpUniteBudgetaires, Mode=TwoWay}" DisplayMember="EMPL" SelectedItem="{Binding SelectedEmplUniteBudgetaires, Mode=TwoWay}"   TextFontSize="Medium" Margin="0" HorizontalOptions="FillAndExpand"  />
+                    <ImageButton x:Name="Img_Button_Filter_Empl" Source="search.png" Clicked="Img_Button_Filter_Empl_Clicked"   BackgroundColor="White"/>
+                </StackLayout>
+                <Label x:Name="Picker_Lib_BATIMENT" Text="{Binding Lib_BATIMENT, Mode=TwoWay}" TextColor="Red" FontAttributes="Bold" />
+                <!--<Label Text="Code Direction : " FontSize="Medium" VerticalOptions="CenterAndExpand"/>-->
+                <StackLayout Orientation="Horizontal">
+                    <dxe:ComboBoxEdit x:Name="Picker_CodeDirection" LabelText="Code Direction :"  Focused="Picker_CodeDirection_Focused" Unfocused="Picker_CodeDirection_Unfocused"  ItemsSource="{Binding ListCodeDirectionUniteBudgetaires, Mode=TwoWay}" DisplayMember="Code_Direction" SelectedItem="{Binding SelectedCode_DirectionUniteBudgetaires}" SelectionChanged="Picker_CodeDirection_SelectedIndexChanged" TextFontSize="Medium" Margin="0" HorizontalOptions="FillAndExpand"  IsEnabled="False"/>
+                    <ImageButton x:Name="Img_Button_Filter_CodeDirection" Source="search.png" Clicked="Img_Button_Filter_CodeDirection_Clicked"  IsEnabled="False" BackgroundColor="White"/>
+                </StackLayout>
+
+                <Label x:Name="Picker_Lib_Direction" Text="{Binding ZONE, Mode=TwoWay}" TextColor="Red" FontAttributes="Bold" />
+
+                <!--<Label Text="Code Bureau : " FontSize="Medium" VerticalOptions="CenterAndExpand"/>-->
+
+                <StackLayout Orientation="Horizontal">
+
+                    <dxe:ComboBoxEdit x:Name="Picker_CodeUB" LabelText="Code Bureau :" Focused="Picker_CodeUB_Focused" Unfocused="Picker_CodeUB_Unfocused"  ItemsSource="{Binding ListCodeUniteBudgetaires, Mode=TwoWay}" DisplayMember="Code_UB" SelectedItem="{Binding SelectedCode_ubUniteBudgetaires}" SelectionChanged="Picker_CodeUB_SelectedIndexChanged" TextFontSize="Medium" Margin="0" HorizontalOptions="FillAndExpand"  IsEnabled="False"/>
+                    <ImageButton x:Name="Img_Button_Filter_CodeUB" Source="search.png" Clicked="Img_Button_Filter_CodeUB_Clicked"  IsEnabled="False" BackgroundColor="White"/>
+                </StackLayout>
+                <Label x:Name="Picker_Lib_UB" Text="{Binding Lib_UB, Mode=TwoWay}" TextColor="Red" FontAttributes="Bold" BindingContextChanged="Picker_Lib_UB_BindingContextChanged" PropertyChanged="Picker_Lib_UB_PropertyChanged"/>
+                <StackLayout Padding="20" Spacing="8">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Spacing="8">
+                        <dxco:SimpleButton x:Name="btn_Logout"  Text="Logout" Command="{Binding LogOutCommand}" Clicked="btn_Logout_Clicked" HorizontalOptions="FillAndExpand"  />
+                        <dxco:SimpleButton x:Name="btn_Affiche" Text="Affichage" Command="{Binding DisplayCommand}" Clicked="btn_Affiche_Clicked" HorizontalOptions="FillAndExpand" ></dxco:SimpleButton>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Spacing="8">
+                        <dxco:SimpleButton x:Name="btn_Cancel" Text="Cancel"  Clicked="btn_Cancel_Clicked" HorizontalOptions="FillAndExpand"></dxco:SimpleButton>
+                        <dxco:SimpleButton x:Name="btn_Suivant" Text="Suivant" Command="{Binding NextCommand}" Clicked="btn_Suivant_Clicked" HorizontalOptions="FillAndExpand"></dxco:SimpleButton>
+                    </StackLayout>
+                </StackLayout>
+                <ActivityIndicator x:Name="activity" />
+                <StackLayout VerticalOptions="EndAndExpand" >
+                    <Label x:Name="labelcr2" Text="COPYRIGHT © TUNITRACK 2023" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"  BackgroundColor="Gray" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  CharacterSpacing="4"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

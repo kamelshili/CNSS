@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="CNSSInv.Views.Inventaire"
+             Title="Inventaire">
+    <ContentPage.Content>
+        <ScrollView x:Name="myscrollview" IsVisible="False">
+            <StackLayout>
+                <StackLayout Spacing="3" Padding="15" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <dxco:SimpleButton x:Name="CameraButton" Text="Take Photo" IsEnabled="False" Grid.Row="0" />
+                    </Grid>
+                    <!--<Label Text="Code Immo :" FontSize="Medium" />-->
+                    <dxe:TextEdit x:Name ="Entry_Immo" LabelText="Code Immo :" Text="{Binding NumImmo, Mode=TwoWay}" Focused="Entry_Immo_Focused" Unfocused="Entry_Immo_Unfocused"  TextChanged="Entry_Immo_TextChanged"  Completed="Entry_Immo_Completed" TextFontSize="Medium"  />
+                    <!--<Label Text="N°Serie :" FontSize="Medium" />-->
+                    <dxe:TextEdit x:Name="Entry_NSerie" LabelText="N°Serie :" Text="{Binding Num_Serie, Mode=TwoWay}" Focused="Entry_NSerie_Focused" Unfocused="Entry_NSerie_Unfocused" TextChanged="Entry_NSerie_TextChanged" Completed="Entry_NSerie_Completed"   TextFontSize="Medium" Margin="0"   />
+                    <Label Text="Catégorie :" FontSize="Medium" />
+                    <!--<Label x:Name="Entry_Nature_TH" IsVisible="False" TextColor="Red" FontAttributes="Bold"/>-->
+                    <StackLayout Orientation="Horizontal">
+                        <!--<Entry x:Name="Entry_Nature" Text="{Binding NewLib_Nature, Mode=TwoWay}" HorizontalOptions="FillAndExpand" TextChanged="Entry_Nature_TextChanged" Completed="Entry_Nature_Completed" Focused="Entry_Nature_Focused" Unfocused="Entry_Nature_Unfocused" IsEnabled="False"/>-->
+                        <dxe:TextEdit x:Name="Entry_Nature"  HorizontalOptions="FillAndExpand" TextChanged="Entry_Nature_TextChanged" Completed="Entry_Nature_Completed" Focused="Entry_Nature_Focused" Unfocused="Entry_Nature_Unfocused" IsEnabled="False"/>
+                        <Picker x:Name="Picker_Description"  IsVisible="False" Focused="Picker_Description_Focused" Unfocused="Picker_Description_Unfocused" ItemsSource="{Binding ListNatures, Mode=TwoWay}" ItemDisplayBinding="{Binding Lib_Nature, Mode=TwoWay}" SelectedItem="{Binding SelectedNatures, Mode=TwoWay}" SelectedIndexChanged="Picker_Description_SelectedIndexChanged" FontSize="Medium" Margin="0" HorizontalOptions="FillAndExpand"   IsEnabled="False"/>
+                        <!--Command="{Binding LoadNatureCommand}"-->
+                        <ImageButton x:Name="Img_Button_Filter" Source="search.png"  Clicked="Img_Button_Filter_Clicked"  IsEnabled="False" BackgroundColor="White"/>
+                    </StackLayout>
+                    <!--<Label Text="Description :" FontSize="Medium" />-->
+                    <dxe:TextEdit x:Name="Entry_Desc" LabelText="Description :" Text="{Binding New_Desc, Mode=TwoWay}" Focused="Entry_Desc_Focused" Unfocused="Entry_Desc_Unfocused" TextChanged="Entry_Desc_TextChanged" Completed="Entry_Desc_Completed"   TextFontSize="Medium" Margin="0"   IsEnabled="False"/>
+                    <Label Text="Etat :" FontSize="Medium" />
+                    <Picker x:Name="Picker_Etat" Focused="Picker_Etat_Focused" Unfocused="Picker_Etat_Unfocused" ItemsSource="{Binding ListEtats, Mode=TwoWay}"  SelectedItem="{Binding SelectedEtat}"    SelectedIndexChanged="Picker_Etat_SelectedIndexChanged" FontSize="Medium" Margin="0"   IsEnabled="False"/>
+                    <!--<Label Text="Old Code :" FontSize="Medium" />-->
+                    <dxe:TextEdit x:Name="Entry_OldCode" LabelText="Old Code :" Text="{Binding Old_Code, Mode=TwoWay}" Focused="Entry_OldCode_Focused" Unfocused="Entry_OldCode_Unfocused"   TextFontSize="Medium" Margin="0"   IsEnabled="False"/>
+                    <StackLayout Orientation="Horizontal" Spacing="5" Padding="10">
+                        <dxco:SimpleButton Text="Cancel" Command="{Binding CancelCommand}" Clicked="Btn_Cancel_Clicked" HorizontalOptions="FillAndExpand"  />
+                        <dxco:SimpleButton Text="Save" Command="{Binding SaveCommand}" Clicked="Btn_Save_Clicked" HorizontalOptions="FillAndExpand"></dxco:SimpleButton>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" >
+                    <Label x:Name="labelcr2" Text="COPYRIGHT © TUNITRACK 2023" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"  BackgroundColor="Gray" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  CharacterSpacing="4"/>
+                </StackLayout> 
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

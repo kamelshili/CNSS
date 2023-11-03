@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="CNSSInv.Views.TakePicture"
+             Title="Take Picture">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Image x:Name="PhotoImage" />
+                <dxco:SimpleButton x:Name="CameraButton" Text="Capturer"  Grid.Row="1" />
+                <dxco:SimpleButton x:Name="DeleteButton" Text="Supprimer" Grid.Row="2" Clicked="DeleteButton_Clicked" />
+                <dxco:SimpleButton x:Name="CloseButton" Text="Fermer" Grid.Row="3" Clicked="CloseButton_Clicked"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

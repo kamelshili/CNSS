@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             x:Class="CNSSInv.Views.ListUniteBudgetaire"
+             Title="Localisation">
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <dxg:DataGridView x:Name="listUB" ItemsSource="{Binding ListAllUniteBudgetaires,Mode=TwoWay}" Margin="30,0,0,0"  SelectedItem="{Binding SelectedAllUniteBudgetaires, Mode=TwoWay}"    
+                  BackgroundColor="WhiteSmoke" ShowAutoFilterRow="True"  Tap="listEmpl_ItemTapped" VerticalOptions="StartAndExpand" HeightRequest="500"  >
+                    <dxg:DataGridView.Columns >
+                        <dxg:TextColumn FieldName="Code_Local"  Caption="Code locale"  AutoFilterCondition="Contains" Width="100"></dxg:TextColumn>
+                        <dxg:TextColumn FieldName="EMPL" Caption="Code BATIMENT" AutoFilterCondition="Contains" Width="100" ></dxg:TextColumn>
+                        <dxg:TextColumn FieldName="SITE" Caption="Lib BATIMENT" AutoFilterCondition="Contains" Width="100"></dxg:TextColumn>
+                        <dxg:TextColumn FieldName="Code_UB" Caption="Code Bureau" AutoFilterCondition="Contains" Width="100"></dxg:TextColumn>
+                        <dxg:TextColumn FieldName="Lib_UB" Caption="Lib Bureau" AutoFilterCondition="Contains" Width="100"></dxg:TextColumn>
+                        <dxg:TextColumn FieldName="Code_Direction" Caption="Code Direction" AutoFilterCondition="Contains" Width="100"></dxg:TextColumn>
+                        <dxg:TextColumn FieldName="ZONE" Caption="Lib Direction" AutoFilterCondition="Contains" Width="100"></dxg:TextColumn>
+                    </dxg:DataGridView.Columns>
+                </dxg:DataGridView>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10" Spacing="4" Margin="0,30,0,0">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Spacing="8">
+                        <dxco:SimpleButton x:Name="btn_Logout"  Text="Logout" Command="{Binding LogOutCommand}" Clicked="btn_Logout_Clicked" HorizontalOptions="FillAndExpand"  />
+                        <dxco:SimpleButton x:Name="btn_Affiche" Text="Affichage" Command="{Binding DisplayCommand}" Clicked="btn_Affiche_Clicked" HorizontalOptions="FillAndExpand" ></dxco:SimpleButton>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Spacing="8">
+                        <dxco:SimpleButton x:Name="btn_Cancel" Text="Cancel"  Clicked="btn_Cancel_Clicked" HorizontalOptions="FillAndExpand"></dxco:SimpleButton>
+                        <dxco:SimpleButton x:Name="btn_Suivant" Text="Suivant" Command="{Binding NextCommand}" Clicked="btn_Suivant_Clicked" HorizontalOptions="FillAndExpand"></dxco:SimpleButton>
+                    </StackLayout>
+                </StackLayout>
+                <ActivityIndicator x:Name="activity" />
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" >
+                    <Label x:Name="labelcr2" Text="COPYRIGHT © TUNITRACK 2023" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"  BackgroundColor="Gray" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  CharacterSpacing="4"/>
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
